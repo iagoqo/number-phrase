@@ -30,7 +30,8 @@
 
     <div class="jumbotron text-center">
       <h1>Number-to-Phrase</h1>
-      <h2 ng-cloak>{{vm.phrase}}</h2>
+      <h2 ng-cloak ng-hide="form.$invalid">{{vm.phrase}}</h2>
+      <h2 ng-cloak ng-show="form.$invalid">Number not valid</h2>
       <form ng-cloak name="form" novalidate>
         <div class="form-group" ng-class="{'has-error': form.$invalid}">
           <label for="number">Number</label>
