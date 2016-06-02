@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Number-2-Phrase</title>
+  <title>Number-to-Phrase</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -29,14 +29,16 @@
   <div class="container" ng-controller="MainController as vm">
 
     <div class="jumbotron text-center">
-      <h1>Number-2-Phrase</h1>
-      <div class="row">
-        <h2>{{vm.phrase}}</h2>
-      </div>
-      <form>
-        <div class="form-group">
+      <h1>Number-to-Phrase</h1>
+      <h2 ng-cloak>{{vm.phrase}}</h2>
+      <form ng-cloak name="form" novalidate>
+        <div class="form-group" ng-class="{'has-error': form.$invalid}">
           <label for="number">Number</label>
-          <input type="number" class="form-control" ng-model="vm.number" min="0" max="9999" ng-change="vm.transform(vm.number)" />
+          <input type="number" class="form-control" ng-model="vm.number" name="number" min="0" max="9999" ng-change="vm.transform(vm.number)" required/>
+          <div class="help-block">
+            <span ng-show="form.number.$error.min || form.number.$error.max">The number must be between 0 and 9999.</span>
+            <span ng-show="form.number.$error.required">The number must not be empty.</span>
+          </div>
         </div>
       </form>
     </div>
