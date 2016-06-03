@@ -42,10 +42,10 @@
      * Returns the string representation of the ones digit of a number.
      * If the ones is 0 it returns an empty string.
      * @param  {Number} number Number to evaluate
-     * @return {string}        String representation of the ones digit, empty if 0
+     * @return {String}        String representation of the ones digit, empty if 0
      */
     function onesToText(number) {
-      var ones = number % 10;
+      var ones = Math.floor(number) % 10;
       var onesList = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
       return onesList[ones];
@@ -59,7 +59,7 @@
      */
     function teensToText(number) {
       // Get the last two digits
-      var twoDigits = number % 100;
+      var twoDigits = Math.floor(number) % 100;
 
       // The number is a teen if 10 < last-two-digits < 20
       var isTeen = twoDigits > 10 && twoDigits < 20;
