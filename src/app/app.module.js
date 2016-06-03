@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('numberPhrase', ['toastr']);
+    .module('numberPhrase', []);
 
 })();
