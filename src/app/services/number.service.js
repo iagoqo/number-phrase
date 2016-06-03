@@ -18,6 +18,9 @@
      * @return {String}        Textual representation of the parameter
      */
     function toPhrase(number) {
+      //Return undefined if number is out of range
+      if (number < 0 || number > 9999) return undefined;
+
       var ones = onesToText(number);
       var tens = tensToText(number);
       var teens = teensToText(number);
@@ -28,11 +31,14 @@
       // of the two rightmost positions. False otherwise.
       var and = (thousands || hundreds) && (tens || ones) && ' and ';
 
-      // Will be '-' for numbers that have digist both on the tens and ones. False otherwise.
+      // Will be '-' for numbers that have digits on the tens and ones positions. False otherwise.
       var dash = tens && ones && '-';
 
+      // Will be ' ' for numbers that have digits on the thousands and hundreds positions
+      var space = thousands && hundreds && ' ';
+
       // Construct the phrase representation concatenating the pieces
-      var phrase = thousands + ' ' + hundreds + and + (teens || (tens + dash + ones));
+      var phrase = thousands + space + hundreds + and + (teens || (tens + dash + ones));
 
       // Delete extra spaces or return 'zero' if the string ends up being empty
       return phrase.trim() || 'zero';
@@ -64,7 +70,7 @@
       // The number is a teen if 10 < last-two-digits < 20
       var isTeen = twoDigits > 10 && twoDigits < 20;
 
-      var ones = number%10;
+      var ones = number % 10;
       var teensList = ['', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
       return isTeen && teensList[ones];
