@@ -16,12 +16,32 @@ I decided to make it work from 0 to 9999, since it was cleaner than just 1000.
 
 
 
+# Building the project
+You will need to have *npm*, *Bower* and *Gulp* installed.
+
+Run to install the dependencies:
+
+    npm install
+    bower install
+
+Run to build the project, the resulting files will be in the **dist** folder:
+
+    gulp
+
+
+
 # Usage
 
 ## Direct usage
+
 The **dist** directory has all the files ready for production. You can copy it to a web server or just open the *index.html* file with your browser.
 
-## Building the project
-Use *gulp serve* to serve the files for development. Use *gulp serve:dist* to build the distribution files and serve those.
+## Serving with Gulp
 
-You must have *Node*, *Gulp* and *Bower* properly installed in order for the previous commands to work.
+Run to serve the development files:
+
+    gulp serve
+
+Run to build and serve the distribution files:
+
+    gulp serve:dist
